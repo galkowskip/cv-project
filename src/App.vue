@@ -1,47 +1,62 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <div id="app">
+    123qwe
+    <RightNavbar v-model:linkList="linkList" @changeActiveLink="changeActiveLink" />
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
+<script setup lang="ts">
+import RightNavbar from './components/RightNavbar.vue'
+import { ref } from 'vue'
+
+import type { ListItem } from './types'
+
+const linkList = ref<Array<ListItem>>(
+  [
+    {
+      name: 'start',
+      text: 'Start',
+      active: true,
+      id: '0',
+    },
+    {
+      name: 'skills',
+      text: 'Skills',
+      active: false,
+      id: '1',
+    },
+    {
+      name: 'experience',
+      text: 'Experience',
+      active: false,
+      id: '2',
+    },
+    {
+      name: 'projects',
+      text: 'Projects',
+      active: false,
+      id: '3',
+    },
+    {
+      name: 'contacts',
+      text: 'Contacts',
+      active: false,
+      id: '4',
+    },
+  ]
+
+)
+
+function changeActiveLink(id: string): void {
+  linkList.value.forEach((item) => {
+    if (item.id === id) {
+      item.active = true
+    } else {
+      item.active = false
+    }
+  })
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+</script>
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
+<style scoped></style>
