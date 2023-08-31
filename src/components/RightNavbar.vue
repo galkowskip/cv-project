@@ -7,24 +7,19 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import type { ListItem } from '@/types'
+
 import NavbarLinks from './NavbarLinks.vue'
 
-import type { ListItem } from '../types'
-
+import canChangeSlides from '@/composables/canChangeSlide';
 const emit = defineEmits(['update:linkList', 'changeActiveLink'])
 const props = defineProps<{
     linkList: Array<ListItem>
 }>()
 
-const linkListComputed = computed({
-    get: () => props.linkList,
-    set: (value) => emit('update:linkList', value),
-})
-
-function onChangeActiveLink(id: string): void {
-    emit('changeActiveLink', id)
-}
+const { linkListComputed,
+    onChangeActiveLink,
+} = canChangeSlides(props.linkList, emit)
 </script>
 
 <style scoped lang="scss"></style>
