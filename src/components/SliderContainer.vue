@@ -1,7 +1,7 @@
 <template>
     <div class="slider">
         <div class="slider__container" ref="container">
-            <div red="slide" v-for="(slide, index) in linkList" @click="onChangeActiveLink(slide.id)" class="slide" :class="{
+            <div ref="slides" v-for="(slide, index) in linkList" @click="onChangeActiveLink(slide.id)" class="slide" :class="{
                 'slide--active': slide.active,
                 'slide--prev': prevSlideIndex === index,
                 'slide--next': prevSlideIndex + 2 === index || (prevSlideIndex + 2 === linkList.length && index === 0),
@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, ref, nextTick } from 'vue';
 import canChangeSlide from '../composables/canChangeSlide'
 import type { ListItem } from '../types'
 
@@ -35,13 +35,13 @@ const prevSlideIndex = computed(() => {
 })
 
 
+const container = ref<HTMLElement | null>(null)
+const slides = ref<HTMLElement[]>([])
+
 function runAnimation() {
     gsap.registerPlugin(ScrollTrigger)
 
-    const container = ref<HTMLElement | null>(null)
-    const slides = ref<HTMLElement[]>([])
-
-    if (container.value === null) return
+    if (container.value === null || !Array.isArray(slides.value) || !slides.value.length) return
 
     const tl = gsap.timeline({
         scrollTrigger: {
@@ -52,27 +52,57 @@ function runAnimation() {
             pin: true,
             anticipatePin: 1,
             snap: {
-                snapTo: 1 / (slides.value.length - 1),
-                duration: 0.5,
-            },
-            onEnter: () => {
-                slides.value.forEach((slide) => {
-                    console.log('enter')
-                    slide.style.removeProperty('transform')
-                })
-            },
+                snapTo: 'labels',
+                duration: { min: 0.2, max: 0.5 },
+            }
         },
     })
 
-    tl.to(slides.value, {
-        xPercent: -100 * (slides.value.length - 1),
-        ease: 'none',
-        duration: 1,
+    tl.addLabel('start')
+
+    slides.value.forEach((slide, index) => {
+        tl.add(() => {
+            onChangeActiveLink(linkListComputed.value[index].id)
+        })
+        if (!index) {
+            tl.set(slide, {
+                yPercent: 0,
+                opacity: 1,
+            })
+        } else {
+            tl.fromTo(slide, {
+                yPercent: -50,
+                opacity: 0,
+            }, {
+                yPercent: 0,
+                opacity: 1,
+            })
+        }
+
+        tl.addLabel(`slide-${index}`)
+        tl.addPause(1)
+
+        tl.addLabel(`slide-${index}-end`, `+=${slide.offsetHeight}`)
+
+        if (index !== slides.value.length - 1) {
+            tl.fromTo(slide, {
+                yPercent: 0,
+                opacity: 1,
+            }, {
+                yPercent: 50,
+                opacity: 0,
+            })
+        }
+        tl.add(() => {
+            onChangeActiveLink(linkListComputed.value[index].id)
+        })
     })
 }
 
 onMounted(() => {
-    runAnimation()
+    nextTick(() => {
+        runAnimation()
+    })
 })
 </script>
 
@@ -103,25 +133,25 @@ onMounted(() => {
     top: 0;
     left: 0;
     z-index: 1;
-    opacity: 0;
-    pointer-events: none;
+    // opacity: 0;
+    // pointer-events: none;
 
-    &--active {
-        z-index: 2;
-        opacity: 1;
-        pointer-events: all;
-        transform: translateX(0);
-    }
+    // &--active {
+    //     z-index: 2;
+    //     opacity: 1;
+    //     pointer-events: all;
+    //     transform: translateX(0);
+    // }
 
-    &--prev {
-        z-index: 0;
-        transform: translateX(-100%);
-    }
+    // &--prev {
+    //     z-index: 0;
+    //     transform: translateX(-100%);
+    // }
 
-    &--next {
-        z-index: 0;
-        transform: translateX(100%);
-    }
+    // &--next {
+    //     z-index: 0;
+    //     transform: translateX(100%);
+    // }
 
 }
 </style>
