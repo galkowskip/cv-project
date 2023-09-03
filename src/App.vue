@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    123qwe
-    <RightNavbar v-model:linkList="linkList" @changeActiveLink="changeActiveLink" />
+    <div class="main-grid">
+      <SliderContainer v-model:linkList="linkList" @changeActiveLink="changeActiveLink" />
+      <RightNavbar v-model:linkList="linkList" @changeActiveLink="changeActiveLink" />
+    </div>
   </div>
 </template>
 
@@ -10,6 +12,7 @@ import RightNavbar from './components/RightNavbar.vue'
 import { ref } from 'vue'
 
 import type { ListItem } from './types'
+import SliderContainer from './components/SliderContainer.vue';
 
 const linkList = ref<Array<ListItem>>(
   [
@@ -59,4 +62,10 @@ function changeActiveLink(id: string): void {
 
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr 390px;
+  grid-template-rows: 100vh;
+}
+</style>
