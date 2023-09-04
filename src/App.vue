@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div class="main-grid">
-      <SliderContainer v-model:linkList="linkList" @changeActiveLink="changeActiveLink" />
-      <RightNavbar v-model:linkList="linkList" @changeActiveLink="changeActiveLink" />
+      <SliderContainer v-model:linkList="linkList" v-model:progress="timelineProgress" @changeActiveLink="changeActiveLink" />
+      <RightNavbar v-model:linkList="linkList" :progress="timelineProgress" @changeActiveLink="changeActiveLink" />
     </div>
   </div>
 </template>
@@ -13,6 +13,8 @@ import { ref } from 'vue'
 
 import type { ListItem } from './types'
 import SliderContainer from './components/SliderContainer.vue';
+
+const timelineProgress = ref<number>(0)
 
 const linkList = ref<Array<ListItem>>(
   [

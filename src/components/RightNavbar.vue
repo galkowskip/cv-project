@@ -1,7 +1,7 @@
 <template>
     <div class="right-navbar">
         <div class="right-navbar__links-container">
-            <NavbarLinks v-model:linkList="linkListComputed" @changeActiveLink="onChangeActiveLink" />
+            <NavbarLinks :progress="progress" v-model:linkList="linkListComputed" @changeActiveLink="onChangeActiveLink" />
         </div>
     </div>
 </template>
@@ -15,6 +15,7 @@ import canChangeSlides from '@/composables/canChangeSlide';
 const emit = defineEmits(['update:linkList', 'changeActiveLink'])
 const props = defineProps<{
     linkList: Array<ListItem>
+    progress: number
 }>()
 
 const { linkListComputed,
@@ -27,6 +28,7 @@ const { linkListComputed,
     position: relative;
     right: 0;
     top: 0;
+
     &__links-container {
         position: fixed;
         top: 0;
@@ -38,6 +40,7 @@ const { linkListComputed,
         padding: 0 1rem;
         background-color: #fff;
         z-index: 1;
+
         @media (max-width: 768px) {
             display: none;
         }

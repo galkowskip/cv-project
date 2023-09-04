@@ -20,7 +20,7 @@ import type { ListItem } from '../types'
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-const emit = defineEmits(['update:linkList', 'changeActiveLink'])
+const emit = defineEmits(['update:linkList', 'changeActiveLink', 'update:progress'])
 const props = defineProps<{
     linkList: Array<ListItem>
 }>()
@@ -38,10 +38,12 @@ const prevSlideIndex = computed(() => {
 const container = ref<HTMLElement | null>(null)
 const slides = ref<HTMLElement[]>([])
 
-function runAnimation() {
+const tl = ref<gsap.core.Timeline | null>(null)
+
+function runAnimation(): gsap.core.Timeline | null {
     gsap.registerPlugin(ScrollTrigger)
 
-    if (container.value === null || !Array.isArray(slides.value) || !slides.value.length) return
+    if (container.value === null || !Array.isArray(slides.value) || !slides.value.length) return null
 
     const tl = gsap.timeline({
         scrollTrigger: {
@@ -51,9 +53,13 @@ function runAnimation() {
             scrub: 1,
             pin: true,
             anticipatePin: 1,
+            
             snap: {
                 snapTo: 'labels',
                 duration: { min: 0.2, max: 0.5 },
+            },
+            onUpdate(self) {
+                emit('update:progress', self.progress.toFixed(2))
             }
         },
     })
@@ -97,11 +103,15 @@ function runAnimation() {
             onChangeActiveLink(linkListComputed.value[index].id)
         })
     })
+
+    return tl
 }
 
 onMounted(() => {
     nextTick(() => {
-        runAnimation()
+        tl.value = runAnimation()
+
+        
     })
 })
 </script>
