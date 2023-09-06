@@ -13,12 +13,16 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref, nextTick } from 'vue';
+import { computed, onMounted, ref, nextTick, watch } from 'vue';
 import canChangeSlide from '../composables/canChangeSlide'
 import type { ListItem } from '../types'
 
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollToPlugin } from 'gsap/all';
+
+gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollToPlugin)
 
 const emit = defineEmits(['update:linkList', 'changeActiveLink', 'update:progress'])
 const props = defineProps<{
@@ -29,20 +33,41 @@ const { linkListComputed,
     onChangeActiveLink,
 } = canChangeSlide(props.linkList, emit)
 
-const prevSlideIndex = computed(() => {
-    const activeSlideIndex = linkListComputed.value.findIndex((slide) => slide.active)
-    return activeSlideIndex === 0 ? linkListComputed.value.length - 1 : activeSlideIndex - 1
-})
 
+const activeSlideIndex = computed(() => {
+    return linkListComputed.value.findIndex((slide) => slide.active)
+})
+const prevSlideIndex = computed(() => {
+    return activeSlideIndex.value === 0 ? linkListComputed.value.length - 1 : activeSlideIndex.value - 1
+})
 
 const container = ref<HTMLElement | null>(null)
 const slides = ref<HTMLElement[]>([])
-
 const tl = ref<gsap.core.Timeline | null>(null)
+const activeSliderItemIndexFromScroll = ref<number>(0)
+activeSliderItemIndexFromScroll.value = activeSlideIndex.value
+const lockSlideChangeEventEmit = ref<boolean>(false)
+
+watch(() => activeSlideIndex.value, (index) => {
+    if (activeSliderItemIndexFromScroll.value === index) return
+
+    if (tl.value === null || tl.value.scrollTrigger === undefined) return;
+
+    lockSlideChangeEventEmit.value = true
+    gsap.to(window, {
+        scrollTo: tl.value.scrollTrigger.labelToScroll(`slide-${index}`), onComplete: () => {
+            lockSlideChangeEventEmit.value = false
+        }
+    })
+})
+
+function scrollChangeActiveItem(index: number): void {
+    activeSliderItemIndexFromScroll.value = index
+    if (lockSlideChangeEventEmit.value) return;
+    onChangeActiveLink(linkListComputed.value[index].id)
+}
 
 function runAnimation(): gsap.core.Timeline | null {
-    gsap.registerPlugin(ScrollTrigger)
-
     if (container.value === null || !Array.isArray(slides.value) || !slides.value.length) return null
 
     const tl = gsap.timeline({
@@ -53,7 +78,7 @@ function runAnimation(): gsap.core.Timeline | null {
             scrub: 1,
             pin: true,
             anticipatePin: 1,
-            
+
             snap: {
                 snapTo: 'labels',
                 duration: { min: 0.2, max: 0.5 },
@@ -68,8 +93,9 @@ function runAnimation(): gsap.core.Timeline | null {
 
     slides.value.forEach((slide, index) => {
         tl.add(() => {
-            onChangeActiveLink(linkListComputed.value[index].id)
+            scrollChangeActiveItem(index)
         })
+
         if (!index) {
             tl.set(slide, {
                 yPercent: 0,
@@ -100,7 +126,7 @@ function runAnimation(): gsap.core.Timeline | null {
             })
         }
         tl.add(() => {
-            onChangeActiveLink(linkListComputed.value[index].id)
+            scrollChangeActiveItem(index)
         })
     })
 
@@ -111,7 +137,7 @@ onMounted(() => {
     nextTick(() => {
         tl.value = runAnimation()
 
-        
+
     })
 })
 </script>

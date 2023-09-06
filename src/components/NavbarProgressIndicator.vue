@@ -4,7 +4,7 @@
 
 <script setup lang="ts">
 defineProps<{
-    progress: number
+    progress: Number | String
 }>()
 
 

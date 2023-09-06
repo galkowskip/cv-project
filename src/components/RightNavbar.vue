@@ -15,7 +15,7 @@ import canChangeSlides from '@/composables/canChangeSlide';
 const emit = defineEmits(['update:linkList', 'changeActiveLink'])
 const props = defineProps<{
     linkList: Array<ListItem>
-    progress: number
+    progress: Number | String
 }>()
 
 const { linkListComputed,

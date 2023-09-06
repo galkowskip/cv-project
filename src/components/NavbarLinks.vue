@@ -14,6 +14,7 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import type { ListItem } from '@/types'
 import canChangeSlides from '@/composables/canChangeSlide';
 
@@ -21,7 +22,7 @@ const emit = defineEmits(['update:linkList', 'changeActiveLink'])
 
 const props = defineProps<{
     linkList: Array<ListItem>
-    progress: number
+    progress: Number | String
 }>()
 
 const {
@@ -42,7 +43,7 @@ const {
     }
     .progress-indicator {
         position: absolute;
-        top: 0;
+        top: -8px;
         left: 0;
         width: 20px;
         height: 100%;
