@@ -14,7 +14,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
 import type { ListItem } from '@/types'
 import canChangeSlides from '@/composables/canChangeSlide';
 
@@ -55,7 +54,7 @@ const {
             background-color: red;
             transform-origin: top center;
             transform: scaleY(0);
-            transition: transform 0.3s ease-in-out;
+            transition: transform 0.3s ease;
         }
     }
 }
