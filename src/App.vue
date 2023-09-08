@@ -72,5 +72,5 @@ function changeActiveLink(id: string): void {
   display: grid;
   grid-template-rows: 100vh;
   position: relative;
-  }
+}
 </style>

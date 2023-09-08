@@ -27,6 +27,8 @@
     display: flex;
     flex-direction: column;
 
+
+
     &__container {
         width: 100%;
         display: flex;
@@ -36,7 +38,7 @@
     &__title {
         font-family: 'Montserrat', sans-serif;
         font-style: normal;
-        font-weight: 800;
+        font-weight: 700;
         font-size: 48px;
         line-height: 59px;
         color: white;
@@ -58,6 +60,21 @@
 
         &--highlighted {
             color: #FFB800;
+        }
+    }
+
+    @media (max-width: 670px) {
+        padding: 100px 24px;
+        height: 300px;
+
+        &__title {
+            font-size: 32px;
+            line-height: 39px;
+        }
+
+        &__text {
+            font-size: 18px;
+            line-height: 22px;
         }
     }
 }
