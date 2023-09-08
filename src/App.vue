@@ -1,9 +1,9 @@
 <template>
-  <div id="app">
-    <div class="main-grid">
-      <SliderContainer v-model:linkList="linkList" v-model:progress="timelineProgress" @changeActiveLink="changeActiveLink" />
-      <RightNavbar v-model:linkList="linkList" :progress="timelineProgress" @changeActiveLink="changeActiveLink" />
-    </div>
+  <HeroSection />
+  <div class="main-grid">
+    <SliderContainer v-model:linkList="linkList" v-model:progress="timelineProgress"
+      @changeActiveLink="changeActiveLink" />
+    <!-- <RightNavbar v-model:linkList="linkList" :progress="timelineProgress" @changeActiveLink="changeActiveLink" /> -->
   </div>
 </template>
 
@@ -13,6 +13,7 @@ import { ref } from 'vue'
 
 import type { ListItem } from './types'
 import SliderContainer from './components/SliderContainer.vue';
+import HeroSection from './components/HeroSection.vue';
 
 const timelineProgress = ref<number>(0)
 
@@ -66,8 +67,10 @@ function changeActiveLink(id: string): void {
 
 <style scoped lang="scss">
 .main-grid {
+  top: 600px;
+  margin-top: 600px;
   display: grid;
-  grid-template-columns: 1fr 390px;
   grid-template-rows: 100vh;
-}
+  position: relative;
+  }
 </style>

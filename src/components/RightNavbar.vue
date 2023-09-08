@@ -32,7 +32,7 @@ const { linkListComputed,
     position: fixed;
     right: 0;
     top: 0;
-    width: 390px;
+    width: 280px;
     height: 100%;
 
     &__links-container {
@@ -67,8 +67,8 @@ const { linkListComputed,
     }
     &__avatar-container {
         position: absolute;
-        top: 220px;
-        left: -160px;
+        top: 120px;
+        left: -80px;
         z-index: 10;
     }
 }

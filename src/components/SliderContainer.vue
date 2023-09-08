@@ -98,15 +98,15 @@ function runAnimation(): gsap.core.Timeline | null {
 
         if (!index) {
             tl.set(slide, {
-                yPercent: 0,
+                xPercent: 0,
                 opacity: 1,
             })
         } else {
             tl.fromTo(slide, {
-                yPercent: -50,
+                xPercent: -50,
                 opacity: 0,
             }, {
-                yPercent: 0,
+                xPercent: 0,
                 opacity: 1,
             })
         }
@@ -118,10 +118,10 @@ function runAnimation(): gsap.core.Timeline | null {
 
         if (index !== slides.value.length - 1) {
             tl.fromTo(slide, {
-                yPercent: 0,
+                xPercent: 0,
                 opacity: 1,
             }, {
-                yPercent: 50,
+                xPercent: 50,
                 opacity: 0,
             })
         }
@@ -152,6 +152,8 @@ onMounted(() => {
     width: 100%;
     height: 100%;
     position: relative;
+    background-color: white;
+
 }
 
 .slide {

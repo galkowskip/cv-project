@@ -9,8 +9,8 @@
 
 <style lang="scss" scoped>
     .avatar {
-        width: 320px;
-        height: 320px;
+        width: 220px;
+        height: 220px;
         box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 50%;
         overflow: hidden;
