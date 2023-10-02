@@ -3,17 +3,18 @@
   <div class="main-grid">
     <SliderContainer v-model:linkList="linkList" v-model:progress="timelineProgress"
       @changeActiveLink="changeActiveLink" />
-    <!-- <RightNavbar v-model:linkList="linkList" :progress="timelineProgress" @changeActiveLink="changeActiveLink" /> -->
   </div>
+  <GoBackSection />
 </template>
 
 <script setup lang="ts">
-import RightNavbar from './components/RightNavbar.vue'
+// import RightNavbar from './components/RightNavbar.vue'
 import { ref } from 'vue'
 
 import type { ListItem } from './types'
 import SliderContainer from './components/SliderContainer.vue';
 import HeroSection from './components/HeroSection.vue';
+import GoBackSection from './components/GoBackSection.vue';
 
 const timelineProgress = ref<number>(0)
 
@@ -69,6 +70,8 @@ function changeActiveLink(id: string): void {
 .main-grid {
   top: 600px;
   margin-top: 600px;
+  margin-bottom: 100vh;
+  min-height: fit-content;
   display: grid;
   grid-template-rows: 100vh;
   position: relative;

@@ -9,29 +9,33 @@
             </div>
         </div>
         <div class="hero-section__background">
-            <img src="../assets/images/hero-section-background.svg" alt="hero section background">
+            <img src="../assets/images/hero-section-background.png" alt="hero section background">
         </div>
     </div>
 </template>
 
 <style scoped lang="scss">
 .hero-section {
-    height: 600px;
+    min-height: 600px;
+
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
     overflow: hidden;
-    background-color: #286675;
-    padding: 200px 48px;
-    display: flex;
-    flex-direction: column;
+    background-color: rgb(24, 24, 24);
+    padding: 120px 48px;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    ;
 
 
 
     &__container {
         width: 100%;
         display: flex;
+        justify-content: center;
         flex-direction: column;
     }
 
@@ -56,10 +60,22 @@
         font-size: 24px;
         line-height: 29px;
         color: white;
-        margin-bottom: 32px;
 
         &--highlighted {
             color: #FFB800;
+        }
+    }
+
+    &__background {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            height: 320px;
+            width: 320px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0px 0px 12px 0px rgba(244, 244, 244, 0.25) ;
         }
     }
 
