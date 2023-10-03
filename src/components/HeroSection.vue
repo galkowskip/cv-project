@@ -1,18 +1,25 @@
 <template>
     <div class="hero-section">
         <div class="hero-section__container">
-            <div class="hero-section__title">
-                Hi, I'm <span class="hero-section__title--highlighted">Paweł Gałkowski</span>
+            <div class="hero-section__content">
+                <div class="hero-section__title">
+                    Hi, I'm <span class="hero-section__title--highlighted">Paweł Gałkowski</span>
+                </div>
+                <div class="hero-section__text">
+                    I'm a <span class="hero-section__text--highlighted">Frontend Developer,</span> and this is my resume.
+                </div>
             </div>
-            <div class="hero-section__text">
-                I'm a <span class="hero-section__text--highlighted">Frontend Developer,</span> and this is my resume.
+            <div class="hero-section__background">
+                <img src="../assets/images/hero-section-background.png" alt="hero section background">
             </div>
         </div>
-        <div class="hero-section__background">
-            <img src="../assets/images/hero-section-background.png" alt="hero section background">
-        </div>
+        <HeroAnimation />
     </div>
 </template>
+
+<script setup>
+import HeroAnimation from './animations/HeroAnimation.vue';
+</script>
 
 <style scoped lang="scss">
 .hero-section {
@@ -24,15 +31,20 @@
     left: 0;
     overflow: hidden;
     background-color: rgb(24, 24, 24);
-    padding: 120px 48px;
-    display: grid;
-    gap: 20px;
-    grid-template-columns: 1fr 1fr;
-    ;
-
-
 
     &__container {
+        max-width: 1440px;
+        padding: 120px 48px;
+        display: grid;
+        gap: 20px;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+        margin: 0 auto;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__content {
         width: 100%;
         display: flex;
         justify-content: center;
@@ -70,12 +82,13 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
         img {
             height: 320px;
             width: 320px;
             border-radius: 50%;
             object-fit: cover;
-            box-shadow: 0px 0px 12px 0px rgba(244, 244, 244, 0.25) ;
+            box-shadow: 0px 0px 12px 0px rgba(244, 244, 244, 0.25);
         }
     }
 

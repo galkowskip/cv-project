@@ -33,7 +33,6 @@ const { linkListComputed,
     onChangeActiveLink,
 } = canChangeSlide(props.linkList, emit)
 
-
 const activeSlideIndex = computed(() => {
     return linkListComputed.value.findIndex((slide) => slide.active)
 })
