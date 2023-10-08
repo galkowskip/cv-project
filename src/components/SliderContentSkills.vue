@@ -83,7 +83,7 @@ const skills = [
           font-size: 22px;
           font-weight: 600;
         }
-        .skill_value {
+        .skill__value {
           font-size: 18px;
           font-weight: 400;
         }
