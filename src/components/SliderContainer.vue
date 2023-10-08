@@ -200,14 +200,14 @@ onMounted(() => {
   left: 0;
   z-index: 1;
   // opacity: 0;
-  // pointer-events: none;
+  pointer-events: none;
 
-  // &--active {
-  //     z-index: 2;
-  //     opacity: 1;
-  //     pointer-events: all;
-  //     transform: translateX(0);
-  // }
+  &--active {
+    //     z-index: 2;
+    //     opacity: 1;
+    pointer-events: all;
+    //     transform: translateX(0);
+  }
 
   // &--prev {
   //     z-index: 0;

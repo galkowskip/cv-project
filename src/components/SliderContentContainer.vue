@@ -16,8 +16,16 @@
 .slider-content {
   max-width: 100%;
   width: 800px;
+  &__content {
+    width: 100%;
+    display: flex;
+  }
   &__title {
     margin-bottom: 32px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 }
 </style>
