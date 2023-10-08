@@ -1,47 +1,84 @@
 <template>
-    <div class="hero-animation">
-        <div ref="animationItem" class="hero-animation__item" v-for="item in 40"></div>
-    </div>
+  <div class="hero-animation">
+    <div
+      ref="animationItems"
+      class="hero-animation__item"
+      v-for="item in 10"
+    ></div>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { gsap } from "gsap"
-import { ref } from "vue"
+import { gsap } from "gsap";
+import { ref, onMounted } from "vue";
 
-const animationItems = ref()
+const animationItems = ref<[HTMLElement] | undefined>();
 
 function runAnnimation(): void {
+  if (animationItems.value === undefined) return;
 
+  const elements = animationItems.value;
 
-    
+  elements.forEach((element, index) => {
+    gsap.set(element, {
+      x: `${index * (element.clientWidth + 50)}`,
+      rotate: "45deg",
+    });
+  });
+
+  gsap.fromTo(
+    elements,
+    {
+      y: "-100%",
+    },
+    {
+      duration: 1,
+      y: "100%",
+      x: "+=100",
+      ease: "power2.inOut",
+      onComplete() {
+        // gsap.fromTo(
+        //   elements,
+        //   {},
+        //   {
+        //     duration: 3,
+        //     ease: "linear",
+        //     onComplete() {
+        //       runAnnimation();
+        //     },
+        //   }
+        // );
+      },
+    }
+  );
 }
+
+onMounted(() => {
+  runAnnimation();
+});
 
 runAnnimation();
 </script>
 
 <style scoped lang="scss">
 .hero-animation {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background-color: rgb(24, 24, 24);
+  z-index: -1;
+  &__item {
+    width: 10%;
+    transform: rotateX(45deg);
+    background-color: #ffb800;
+    opacity: 0.1;
     position: absolute;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    background-color: rgb(24, 24, 24);
-    display: grid;
-    z-index: -1;
-    grid-template-columns: repeat(10, 1fr);
-    grid-template-rows: repeat(4, 150px);
-    gap: 22px;
-
-    &__item {
-        width: 100%;
-        height: 100%;
-        border: 1px solid #FFB800;
-        opacity: 0.2;
-        border-radius: 8px;
-        transform: rotateX(0deg) rotateY(0deg);
-
-    }
+    height: 120%;
+    transform-style: preserve-3d;
+    transform-origin: center center;
+  }
 }
 </style>
