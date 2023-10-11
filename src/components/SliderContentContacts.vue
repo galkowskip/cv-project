@@ -1,8 +1,8 @@
 <template>
   <SliderContentContainer>
-    <template v-slot:title>Skills</template>
+    <template v-slot:title>Contact</template>
     <template v-slot:content>
-      <div class="skills"></div>
+      <div class="contacts"></div>
     </template>
   </SliderContentContainer>
 </template>
