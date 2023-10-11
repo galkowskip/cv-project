@@ -6,6 +6,7 @@
       v-model:progress="timelineProgress"
       @changeActiveLink="changeActiveLink"
     >
+      test
       <template v-slot:item.skills="{ slide }">
         <SliderContentSkills :slide="slide" />
       </template>
