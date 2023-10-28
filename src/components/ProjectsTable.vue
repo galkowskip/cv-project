@@ -1,7 +1,11 @@
 <template>
   <div class="projects">
-    <template v-if="isLoading"> Loading </template>
-    <template v-if="projects.length && !projectsFetchError">
+    <template v-if="isLoading">
+      <div class="projects__loading">
+        <Loader />
+      </div>
+    </template>
+    <template v-else-if="projects.length && !projectsFetchError">
       <div class="projects__list">
         <ProjectBox
           v-for="project in activeProjects"
@@ -10,13 +14,13 @@
         />
       </div>
       <div class="projects__list-controler" v-if="displayListControllers">
-        <Button
+        <button
           class="projects__list-controler-button"
           :disabled="currentPage === 1"
           @click="changeCurrentPage(currentPage - 1)"
         >
           <ChevronLeftIconVue />
-        </Button>
+        </button>
 
         <div class="projects__list-controler-pages">
           <span
@@ -31,23 +35,30 @@
           </span>
         </div>
 
-        <Button
+        <button
           class="projects__list-controler-button"
           :disabled="currentPage === pages"
           @click="changeCurrentPage(currentPage + 1)"
         >
           <ChevronRightIconVue />
-        </Button>
+        </button>
       </div>
     </template>
-    <template v-if="projectsFetchError"> {{ `Error :(` }} </template>
+    <template v-else-if="projectsFetchError">
+      <div class="projects__error">
+        There was an error while fetching data. Please refresh this page.
+      </div>
+    </template>
   </div>
 </template>
 
 <script setup lang="ts">
-import ProjectBox from "./ProjectBox.vue";
 import { ref, onMounted, computed } from "vue";
 import type { GithubProject } from "../types";
+
+import ProjectBox from "./ProjectBox.vue";
+import Loader from "./icons/Loader.vue";
+
 import ChevronLeftIconVue from "./icons/ChevronLeftIcon.vue";
 import ChevronRightIconVue from "./icons/ChevronRightIcon.vue";
 
@@ -113,6 +124,24 @@ onMounted(() => {
     gap: 24px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+  }
+  &__loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    min-height: 300px;
+    color: #ffb800;
+  }
+  &__error {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    min-height: 300px;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 300;
   }
   &__list-controler {
     display: flex;
