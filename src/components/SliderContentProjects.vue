@@ -15,15 +15,11 @@
         <template v-if="isLoading"> Loading </template>
         <template v-if="projects.length && !projectsFetchError">
           <div class="projects__list">
-            <a
+            <ProjectBox
               v-for="project in projects"
               :key="project.id"
-              :href="project.html_url"
-              target="_blank"
-              class="project"
-            >
-              {{ project.name }}
-            </a>
+              :project="project"
+            />
           </div>
         </template>
         <template v-if="projectsFetchError"> {{ `Error :(` }} </template>
@@ -33,6 +29,7 @@
 </template>
 
 <script setup>
+import ProjectBox from "./ProjectBox.vue";
 import SliderContentContainer from "./SliderContentContainer.vue";
 import { ref, onMounted } from "vue";
 
@@ -75,14 +72,12 @@ onMounted(() => {
       }
     }
     .projects {
+      width: 100%;
       &__list {
         width: 100%;
         gap: 24px;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        .project {
-          display: block;
-        }
       }
     }
   }
