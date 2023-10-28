@@ -193,7 +193,7 @@ onMounted(() => {
   font-size: 2rem;
   font-weight: 700;
   color: #000;
-  cursor: pointer;
+  cursor: default;
   transition: all 0.3s ease;
   position: absolute;
   top: 0;

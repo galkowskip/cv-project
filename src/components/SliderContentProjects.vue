@@ -11,50 +11,14 @@
       </a>
     </template>
     <template v-slot:content>
-      <div class="projects">
-        <template v-if="isLoading"> Loading </template>
-        <template v-if="projects.length && !projectsFetchError">
-          <div class="projects__list">
-            <ProjectBox
-              v-for="project in projects"
-              :key="project.id"
-              :project="project"
-            />
-          </div>
-        </template>
-        <template v-if="projectsFetchError"> {{ `Error :(` }} </template>
-      </div>
+      <ProjectsTable />
     </template>
   </SliderContentContainer>
 </template>
 
 <script setup>
-import ProjectBox from "./ProjectBox.vue";
 import SliderContentContainer from "./SliderContentContainer.vue";
-import { ref, onMounted } from "vue";
-
-// GET: https://api.github.com/users/galkowskip/repos
-let projects = [];
-const projectsFetchError = ref(false);
-const isLoading = ref(true);
-
-const getProjects = async () => {
-  try {
-    isLoading.value = true;
-    const response = await fetch(
-      "https://api.github.com/users/galkowskip/repos"
-    );
-    projects = await response.json();
-  } catch (error) {
-    projectsFetchError.value = true;
-  }
-
-  isLoading.value = false;
-};
-
-onMounted(() => {
-  getProjects();
-});
+import ProjectsTable from "./ProjectsTable.vue";
 </script>
 
 <style scoped lang="scss">
@@ -72,16 +36,6 @@ onMounted(() => {
         }
       }
     }
-    .projects {
-      width: 100%;
-      &__list {
-        width: 100%;
-        gap: 24px;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
   }
 }
 </style>
-1

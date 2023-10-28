@@ -25,7 +25,7 @@ import SliderContentContainer from "./SliderContentContainer.vue";
 const experiences = [
   {
     position: "Frontend Developer",
-    company: "RSStudio",
+    company: "RS Studio",
     from: "August 2021",
     to: "Present",
     description:
@@ -34,7 +34,7 @@ const experiences = [
 
   {
     position: "Junior Frontend Developer",
-    company: "RSStudio",
+    company: "RS Studio",
     from: "November 2020",
     to: "August 2021",
     description:
@@ -42,7 +42,7 @@ const experiences = [
   },
   {
     position: "Junior Frontend Developer",
-    company: "InteractiveVision",
+    company: "Interactive Vision",
     from: "April 2020",
     to: "June 2020",
     description:
