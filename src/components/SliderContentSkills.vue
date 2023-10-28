@@ -68,11 +68,11 @@ const skills = [
     .skills {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 24px;
       .skill {
         display: flex;
         flex-direction: column;
-        gap: 24px;
+        gap: 12px;
 
         .skill__content {
           display: flex;
