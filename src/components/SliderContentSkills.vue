@@ -3,10 +3,16 @@
     <template v-slot:title>Skills</template>
     <template v-slot:content>
       <div class="skills">
-        <div class="skill" v-for="(item, index) in skills">
+        <div
+          class="skill"
+          v-for="(item, index) in skills"
+          :key="`${item.name}-${index}`"
+        >
           <div class="skill__content">
             <div class="skill__name">{{ item.name }}</div>
-            <div class="skill__value">{{ item.value }}</div>
+            <div class="skill__value">
+              <StarIndicator :count="item.value" />
+            </div>
           </div>
           <div class="skill__description">
             {{ item.description }}
@@ -19,6 +25,7 @@
 
 <script setup>
 import SliderContentContainer from "./SliderContentContainer.vue";
+import StarIndicator from "./StarIndicator.vue";
 
 const skills = [
   {
@@ -86,6 +93,7 @@ const skills = [
         .skill__value {
           font-size: 18px;
           font-weight: 400;
+          color: #ffb800;
         }
         .skill__description {
           font-size: 16px;

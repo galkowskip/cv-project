@@ -36,7 +36,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps, ref } from "vue";
+import { ref } from "vue";
 import StarIcon from "./icons/StarIcon.vue";
 
 defineProps({

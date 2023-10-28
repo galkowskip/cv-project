@@ -68,6 +68,7 @@ onMounted(() => {
         text-decoration: none;
         margin-left: auto;
         &:hover {
+          text-decoration: underline;
         }
       }
     }

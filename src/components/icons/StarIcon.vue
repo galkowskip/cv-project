@@ -1,5 +1,6 @@
 <template>
   <svg
+    v-if="size === '16'"
     width="16"
     height="16"
     viewBox="0 0 16 16"
@@ -11,4 +12,26 @@
       fill="currentColor"
     />
   </svg>
+  <svg
+    v-else-if="size === '24'"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M12.4632 3L14.6971 9.87539H21.9263L16.0778 14.1246L18.3117 21L12.4632 16.7508L6.61461 21L8.84855 14.1246L3 9.87539H10.2292L12.4632 3Z"
+      fill="currentColor"
+    />
+  </svg>
 </template>
+
+<script lang="ts">
+import iconMixin from "../../mixins/iconMixin";
+
+export default {
+  name: "StarIcon",
+  mixins: [iconMixin],
+};
+</script>

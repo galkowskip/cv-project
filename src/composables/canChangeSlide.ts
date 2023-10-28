@@ -1,6 +1,5 @@
 
 import { computed } from 'vue'
-import { defineProps, defineEmits } from 'vue'
 import type { ListItem } from '../types'
 
 export default function canChangeSlides(linkList: Array<ListItem>, emit: any) {

@@ -57,11 +57,11 @@ const experiences = [
     .experiences {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 24px;
       .experience {
         display: flex;
         flex-direction: column;
-        gap: 24px;
+        gap: 12px;
 
         .experience__content {
           display: flex;
