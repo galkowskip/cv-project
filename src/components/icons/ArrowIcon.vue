@@ -17,7 +17,6 @@
 import iconMixin from "../../mixins/iconMixin";
 
 export default {
-  name: "StarIcon",
   mixins: [iconMixin],
 };
 </script>

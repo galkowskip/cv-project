@@ -155,6 +155,7 @@ function scrollToSkillsSection() {
 
       &:hover {
         transform: scale(1.1);
+        box-shadow: 0px 0px 8px 0px var(--main-color);
       }
     }
   }
