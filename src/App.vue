@@ -6,7 +6,6 @@
       v-model:progress="timelineProgress"
       @changeActiveLink="changeActiveLink"
     >
-      test
       <template v-slot:item.skills="{ slide }">
         <SliderContentSkills :slide="slide" />
       </template>
@@ -15,6 +14,9 @@
       </template>
       <template v-slot:item.projects="{ slide }">
         <SliderContentProjects :slide="slide" />
+      </template>
+      <template v-slot:item.blog="{ slide }">
+        <SliderContentBlog :slide="slide" />
       </template>
       <template v-slot:item.contacts="{ slide }">
         <SliderContentContacts :slide="slide" />
@@ -37,6 +39,7 @@ import SliderContentSkills from "./components/SliderContentSkills.vue";
 import SliderContentExperience from "./components/SliderContentExperience.vue";
 import SliderContentProjects from "./components/SliderContentProjects.vue";
 import SliderContentContacts from "./components/SliderContentContacts.vue";
+import SliderContentBlog from "./components/SliderContentBlog.vue";
 
 const timelineProgress = ref<number>(0);
 
@@ -60,10 +63,16 @@ const linkList = ref<Array<ListItem>>([
     id: "3",
   },
   {
+    name: "blog",
+    text: "Blog",
+    active: false,
+    id: "4",
+  },
+  {
     name: "contacts",
     text: "Contacts",
     active: false,
-    id: "4",
+    id: "5",
   },
 ]);
 

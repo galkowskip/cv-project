@@ -40,4 +40,15 @@ interface GithubProject {
     };
 }
 
-export type { ListItem, GithubProject };
+interface BlogPost {
+    id: string;
+    title: string;
+    content: string;
+    author: string;
+    date: string;
+    slug: string;
+    tags: string[];
+    coverImage: string;
+}
+
+export type { ListItem, GithubProject, BlogPost };
