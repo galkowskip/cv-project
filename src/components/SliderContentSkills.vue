@@ -1,5 +1,5 @@
 <template>
-  <SliderContentContainer class="slider-content--skills">
+  <SliderContentContainer class="slider-content--skills" id="skills-section">
     <template v-slot:title>Skills</template>
     <template v-slot:content>
       <div class="skills">
