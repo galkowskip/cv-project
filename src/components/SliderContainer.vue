@@ -85,6 +85,27 @@ function scrollChangeActiveItem(index: number): void {
   onChangeActiveLink(linkListComputed.value[index].id);
 }
 
+function addOverflowToActiveElement(index: number | false): void {
+  if (tl.value === null || tl.value.scrollTrigger === undefined) return;
+
+  if (index === false) {
+    slides.value.forEach((slide) => {
+      slide.classList.remove("slide--locked");
+    });
+
+    return;
+  } else {
+    slides.value.forEach((slide, slideIndex) => {
+      if (slideIndex === index) {
+        slide.classList.add("slide--locked");
+      } else {
+        slide.classList.remove("slide--locked");
+      }
+    });
+    return;
+  }
+}
+
 function runAnimation(): gsap.core.Timeline | null {
   if (
     container.value === null ||
@@ -137,11 +158,18 @@ function runAnimation(): gsap.core.Timeline | null {
         }
       );
     }
-
+    tl.add(() => {
+      addOverflowToActiveElement(index);
+    });
     tl.addLabel(`slide-${index}`);
+
     tl.addPause(1);
 
     tl.addLabel(`slide-${index}-end`, `+=${slide.offsetHeight}`);
+
+    tl.add(() => {
+      addOverflowToActiveElement(index);
+    });
 
     if (index !== slides.value.length - 1) {
       tl.fromTo(
@@ -164,9 +192,25 @@ function runAnimation(): gsap.core.Timeline | null {
   return tl;
 }
 
+function listenResize(): void {
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 768) {
+      if (tl.value === null) {
+        tl.value = runAnimation();
+      }
+    } else {
+      if (tl.value !== null) {
+        tl.value.kill();
+        tl.value = null;
+      }
+    }
+  });
+}
+
 onMounted(() => {
   nextTick(() => {
-    tl.value = runAnimation();
+    window.innerWidth > 768 ? (tl.value = runAnimation()) : (tl.value = null);
+    listenResize();
   });
 });
 </script>
@@ -175,6 +219,10 @@ onMounted(() => {
 .slider {
   width: 100%;
   height: 100%;
+
+  @media (max-width: 768px) {
+    height: fit-content;
+  }
 }
 
 .slider__container {
@@ -182,11 +230,18 @@ onMounted(() => {
   height: 100%;
   position: relative;
   background-color: white;
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
 }
 
 .slide {
   width: 100%;
   height: 100%;
+  padding: 0 24px;
+  max-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -201,12 +256,22 @@ onMounted(() => {
   z-index: 1;
   // opacity: 0;
   pointer-events: none;
+  max-width: 100vw;
+
+  @media (max-width: 768px) {
+    position: static;
+    pointer-events: all;
+    max-height: unset;
+  }
 
   &--active {
     //     z-index: 2;
     //     opacity: 1;
     pointer-events: all;
     //     transform: translateX(0);
+  }
+  &--locked {
+    overflow-y: auto;
   }
 
   // &--prev {
@@ -218,5 +283,11 @@ onMounted(() => {
   //     z-index: 0;
   //     transform: translateX(100%);
   // }
+
+  @media (max-width: 768px) {
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 48px 24px;
+  }
 }
 </style>

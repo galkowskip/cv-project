@@ -1,0 +1,23 @@
+<template>
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M11.2929 20.7071C11.6834 21.0976 12.3166 21.0976 12.7071 20.7071L19.0711 14.3431C19.4616 13.9526 19.4616 13.3195 19.0711 12.9289C18.6805 12.5384 18.0474 12.5384 17.6569 12.9289L12 18.5858L6.34315 12.9289C5.95262 12.5384 5.31946 12.5384 4.92893 12.9289C4.53841 13.3195 4.53841 13.9526 4.92893 14.3431L11.2929 20.7071ZM13 20V4H11L11 20H13Z"
+      fill="currentColor"
+    />
+  </svg>
+</template>
+
+<script lang="ts">
+import iconMixin from "../../mixins/iconMixin";
+
+export default {
+  name: "StarIcon",
+  mixins: [iconMixin],
+};
+</script>

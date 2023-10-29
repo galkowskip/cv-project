@@ -21,12 +21,12 @@ import { ref, onMounted } from "vue";
 
 const props = defineProps({
   count: {
-    type: Number,
+    type: [Number, String],
     required: false,
     default: 0,
   },
   maxCount: {
-    type: Number,
+    type: [Number, String],
     required: false,
     default: 5,
   },

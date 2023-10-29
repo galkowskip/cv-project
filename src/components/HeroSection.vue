@@ -29,11 +29,18 @@
         />
       </div>
     </div>
+    <div class="hero-section__fab">
+      <button>
+        <ArrowIcon size="24" />
+      </button>
+    </div>
     <!-- <HeroAnimation /> -->
   </div>
 </template>
 
 <script setup>
+import ArrowIcon from "./icons/ArrowIcon.vue";
+
 // import HeroAnimation from './animations/HeroAnimation.vue';
 </script>
 
@@ -45,8 +52,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  overflow: hidden;
-  background-color: rgb(24, 24, 24);
+  background-color: var(--dark-color);
+  overflow: visible;
 
   &__container {
     max-width: 1440px;
@@ -77,7 +84,7 @@
     margin-bottom: 16px;
 
     &--highlighted {
-      color: #ffb800;
+      color: var(--main-color);
     }
   }
 
@@ -90,7 +97,7 @@
     color: white;
 
     &--highlighted {
-      color: #ffb800;
+      color: var(--main-color);
     }
   }
   &__paragraph {
@@ -120,9 +127,67 @@
     }
   }
 
+  &__fab {
+    position: absolute;
+    bottom: -24px;
+    right: calc(50% - 24px);
+    z-index: 10;
+
+    button {
+      background-color: var(--main-color);
+      border: none;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0px 0px 12px 0px rgba(244, 244, 244, 0.25);
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  @media (max-width: 992px) {
+    min-height: unset;
+
+    &__background {
+      img {
+        height: 300px;
+        width: 300px;
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    &__container {
+      padding: 60px 24px;
+      height: 100%;
+    }
+    &__background {
+      img {
+        height: 280px;
+        width: 280px;
+      }
+    }
+  }
+
   @media (max-width: 670px) {
-    padding: 100px 24px;
-    height: 300px;
+    &__container {
+      padding: 60px 24px;
+      margin: auto 0px;
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    &__background {
+      img {
+        height: 200px;
+        width: 200px;
+      }
+    }
 
     &__title {
       font-size: 32px;
@@ -132,6 +197,9 @@
     &__text {
       font-size: 18px;
       line-height: 22px;
+    }
+    &__paragraph {
+      font-size: 14px;
     }
   }
 }

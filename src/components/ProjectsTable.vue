@@ -124,6 +124,11 @@ onMounted(() => {
     gap: 24px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 130px);
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      grid-template-rows: unset;
+    }
   }
   &__loading {
     display: flex;
@@ -131,7 +136,7 @@ onMounted(() => {
     align-items: center;
     height: 100%;
     min-height: 300px;
-    color: #ffb800;
+    color: var(--main-color);
   }
   &__error {
     display: flex;
@@ -158,7 +163,7 @@ onMounted(() => {
       display: flex;
       align-items: center;
       -webkit-appearance: none;
-      color: #ffb800;
+      color: var(--main-color);
       &:disabled {
         cursor: not-allowed;
         color: #aaa;
@@ -177,12 +182,9 @@ onMounted(() => {
       cursor: pointer;
       font-weight: 400;
       transition: color 0.2s ease-in-out;
-      &:hover {
-        color: #ffb800;
-      }
+      &:hover,
       &--active {
-        font-weight: 600;
-        color: #ffb800;
+        color: var(--main-color);
       }
     }
   }
