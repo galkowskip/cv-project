@@ -15,9 +15,9 @@
       <template v-slot:item.projects="{ slide }">
         <SliderContentProjects :slide="slide" />
       </template>
-      <template v-slot:item.blog="{ slide }">
+      <!-- <template v-slot:item.blog="{ slide }">
         <SliderContentBlog :slide="slide" />
-      </template>
+      </template> -->
       <template v-slot:item.contacts="{ slide }">
         <SliderContentContacts :slide="slide" />
       </template>
@@ -62,17 +62,17 @@ const linkList = ref<Array<ListItem>>([
     active: false,
     id: "3",
   },
-  {
-    name: "blog",
-    text: "Blog",
-    active: false,
-    id: "4",
-  },
+  // {
+  //   name: "blog",
+  //   text: "Blog",
+  //   active: false,
+  //   id: "4",
+  // },
   {
     name: "contacts",
     text: "Contacts",
     active: false,
-    id: "5",
+    id: "4",
   },
 ]);
 
