@@ -79,6 +79,7 @@ function changeActiveLink(id: string): void {
 </script>
 
 <style scoped lang="scss">
+@import "./assets/styles/variables.scss";
 .main-grid {
   top: 600px;
   margin-top: 600px;
@@ -87,5 +88,8 @@ function changeActiveLink(id: string): void {
   display: grid;
   grid-template-rows: 100vh;
   position: relative;
+  @media (max-width: 768px) {
+    // top: 0px;
+  }
 }
 </style>

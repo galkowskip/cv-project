@@ -67,6 +67,10 @@ const experiences = [
           display: flex;
           align-content: center;
           justify-content: space-between;
+          @media (max-width: 768px) {
+            flex-direction: column;
+            gap: 8px;
+          }
         }
         .experience__name {
           font-size: 22px;
@@ -79,6 +83,7 @@ const experiences = [
         .experience__description {
           font-size: 16px;
           font-weight: 400;
+          text-align: justify;
         }
       }
     }

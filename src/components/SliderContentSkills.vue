@@ -93,11 +93,12 @@ const skills = [
         .skill__value {
           font-size: 18px;
           font-weight: 400;
-          color: #ffb800;
+          color: var(--main-color);
         }
         .skill__description {
           font-size: 16px;
           font-weight: 400;
+          text-align: justify;
         }
       }
     }

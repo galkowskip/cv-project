@@ -68,12 +68,12 @@ runAnnimation();
   top: 0;
   left: 0;
   overflow: hidden;
-  background-color: rgb(24, 24, 24);
+  background-color: var(--dark-color);
   z-index: -1;
   &__item {
     width: 10%;
     transform: rotateX(45deg);
-    background-color: #ffb800;
+    background-color: var(--main-color);
     opacity: 0.1;
     position: absolute;
     height: 120%;

@@ -28,7 +28,7 @@ import ProjectsTable from "./ProjectsTable.vue";
     .slider-content__title {
       .action {
         font-size: 22px;
-        color: #ffb800;
+        color: var(--main-color);
         text-decoration: none;
         margin-left: auto;
         &:hover {

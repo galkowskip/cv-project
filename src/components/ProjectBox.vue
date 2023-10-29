@@ -73,7 +73,7 @@ const loading = ref(false);
   &__action {
     font-size: 16px;
     line-height: 24px;
-    color: #ffb800;
+    color: var(--main-color);
     text-decoration: none;
     &:hover {
       text-decoration: underline;
@@ -155,7 +155,7 @@ const loading = ref(false);
       display: flex;
       align-items: center;
       background-size: cover;
-      color: #ffb800;
+      color: var(--main-color);
     }
     &-count {
       font-size: 16px;
