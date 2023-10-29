@@ -30,7 +30,7 @@
       </div>
     </div>
     <div class="hero-section__fab">
-      <button>
+      <button @click="scrollToSkillsSection()">
         <ArrowIcon size="24" />
       </button>
     </div>
@@ -38,10 +38,17 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import ArrowIcon from "./icons/ArrowIcon.vue";
 
 // import HeroAnimation from './animations/HeroAnimation.vue';
+
+function scrollToSkillsSection() {
+  const skillsSection = document.getElementById("skills-section");
+  if (skillsSection) {
+    skillsSection.scrollIntoView({ behavior: "smooth" });
+  }
+}
 </script>
 
 <style scoped lang="scss">
