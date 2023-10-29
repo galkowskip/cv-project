@@ -121,9 +121,12 @@ onMounted(() => {
   width: 100%;
   &__list {
     width: 100%;
+    height: 384px;
+    max-height: 384px;
     gap: 24px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
   }
   &__loading {
     display: flex;
@@ -177,11 +180,8 @@ onMounted(() => {
       cursor: pointer;
       font-weight: 400;
       transition: color 0.2s ease-in-out;
-      &:hover {
-        color: #ffb800;
-      }
+      &:hover,
       &--active {
-        font-weight: 600;
         color: #ffb800;
       }
     }
