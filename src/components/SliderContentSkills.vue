@@ -11,7 +11,7 @@
           <div class="skill__content">
             <div class="skill__name">{{ item.name }}</div>
             <div class="skill__value">
-              <StarIndicator :count="item.value" />
+              <StarIndicator :count="Number(item.value)" />
             </div>
           </div>
           <div class="skill__description">
