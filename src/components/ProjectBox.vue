@@ -83,12 +83,14 @@ const loading = ref(false);
     font-size: 16px;
     line-height: 24px;
     margin-bottom: 16px;
+    font-weight: 300;
   }
 
   &__footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: auto;
   }
   &__language {
     position: relative;
