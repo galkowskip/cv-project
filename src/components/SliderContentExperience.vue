@@ -29,7 +29,7 @@ const experiences = [
     from: "August 2021",
     to: "Present",
     description:
-      "As a skilled Frontend Developer, I have successfully created and developed several applications using Vue and Nuxt. Working in small teams, I collaborated closely with backend developers to produce customized applications that met the unique needs of our clients. My contributions have been instrumental in delivering high-quality solutions that have exceeded client expectations. I take pride in my ability to consistently deliver exceptional results and look forward to continuing to contribute to the success of future projects.",
+      "As a skilled Frontend Developer, I have successfully created and developed several applications using Vue and Nuxt. Working in small teams, I collaborated closely with backend developers to produce customized applications that met the unique needs of our clients. My contributions have been instrumental in delivering high-quality solutions that have exceeded client expectations.",
   },
 
   {
@@ -38,7 +38,7 @@ const experiences = [
     from: "November 2020",
     to: "August 2021",
     description:
-      "As a skilled web developer, I have been responsible for integrating client websites into custom WHMCS templates and developing Laravel-based websites. I have also created and prepared WHMCS modules for clients, showcasing my expertise in web development and client management. My contributions have led to the successful completion of numerous projects.",
+      "I have been responsible for integrating client websites into custom WHMCS templates and developing Laravel-based websites. I have also created and prepared WHMCS modules for clients, showcasing my expertise in web development and client management. My contributions have led to the successful completion of numerous projects.",
   },
   {
     position: "Junior Frontend Developer",
@@ -57,7 +57,7 @@ const experiences = [
     .experiences {
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 48px;
       .experience {
         display: flex;
         flex-direction: column;

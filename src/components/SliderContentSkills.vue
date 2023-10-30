@@ -38,26 +38,26 @@ const skills = [
     name: "CSS",
     value: "4",
     description:
-      "Proficient in writing clean, maintainable CSS using modern CSS frameworks such as Tailwind CSS and Bootstrap. Able to create responsive web pages that look great on all devices.",
+      "Experienced in writing clean, maintainable CSS using modern CSS frameworks such as Tailwind and Bootstrap. Able to create responsive web pages that look great on all devices.",
   },
   {
     name: "JavaScript",
     value: "4",
     description:
-      "Experienced in writing clean, maintainable JavaScript code using modern ES6+ syntax. Able to create dynamic and interactive web pages that engage users.",
+      "Knowledgeable in writing clean, maintainable JavaScript code using modern ES6+ syntax. Able to create dynamic and interactive web pages that engage users.",
   },
 
   {
     name: "Vue",
     value: "4",
     description:
-      "Knowledgeable in Vue.js and its component-based architecture. Experienced in using Vue 3 and Nuxt.js to build scalable and performant web applications.",
+      "Skillful in Vue.js and its component-based architecture. Experienced in using Vue 3 and Nuxt.js to build scalable and performant web applications. Also familiar with Vuex and Vue Router and able to use them to build complex web applications.",
   },
   {
     name: "React",
     value: "3",
     description:
-      "Familiar with React's component-based architecture and able to create dynamic and interactive web pages that engage users. Continuously learning and improving my React skills.",
+      "Adept with React's architecture, able to create complex components and use them to build scalable and performant web applications.",
   },
   {
     name: "Node",
