@@ -1,12 +1,7 @@
 <template>
   <SliderContentContainer class="slider-content--projects">
-    <template v-slot:title
-      >Projects
-      <a
-        href="https://github.com/galkowskip?tab=repositories"
-        target="_blank"
-        class="action"
-      >
+    <template v-slot:title>Projects
+      <a href="https://github.com/galkowskip?tab=repositories" target="_blank" class="action">
         View all
       </a>
     </template>
@@ -24,6 +19,7 @@ import ProjectsTable from "./ProjectsTable.vue";
 <style scoped lang="scss">
 .slider-content {
   &--projects {
+
     // title
     .slider-content__title {
       .action {
@@ -31,6 +27,7 @@ import ProjectsTable from "./ProjectsTable.vue";
         color: var(--main-color);
         text-decoration: none;
         margin-left: auto;
+
         &:hover {
           text-decoration: underline;
         }

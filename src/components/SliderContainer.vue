@@ -229,7 +229,8 @@ onMounted(() => {
   width: 100%;
   height: 100%;
   position: relative;
-  background-color: white;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 20px #fff;
   @media (max-width: 768px) {
     display: flex;
     flex-direction: column;

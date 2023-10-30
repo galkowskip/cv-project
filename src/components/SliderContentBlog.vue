@@ -2,7 +2,7 @@
   <SliderContentContainer>
     <template v-slot:title>Blog </template>
     <template v-slot:content>
-      <div class="contacts"></div>
+      <div class="blog"></div>
     </template>
   </SliderContentContainer>
 </template>
