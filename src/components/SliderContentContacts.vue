@@ -17,5 +17,6 @@ import SliderContentContainer from "./SliderContentContainer.vue";
 .contacts {
   max-width: 480px;
   width: 100%;
+  margin: auto;
 }
 </style>

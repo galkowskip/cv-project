@@ -38,7 +38,7 @@ const experiences = [
     from: "November 2020",
     to: "August 2021",
     description:
-      "As a skilled web developer, I have been responsible for integrating client websites into custom WHMCS templates and developing Laravel-based websites. I have also created and prepared WHMCS modules for clients, showcasing my expertise in web development and client management. My contributions have led to the successful completion of numerous projects, and I am proud to have played a key role in the growth and success of ABC Web Solutions.",
+      "As a skilled web developer, I have been responsible for integrating client websites into custom WHMCS templates and developing Laravel-based websites. I have also created and prepared WHMCS modules for clients, showcasing my expertise in web development and client management. My contributions have led to the successful completion of numerous projects.",
   },
   {
     position: "Junior Frontend Developer",
