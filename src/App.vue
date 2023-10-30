@@ -1,11 +1,12 @@
 <template>
+  <metainfo>
+    <template v-slot:title="{ content }">{{ content ? `${content} | SITE_NAME` : `SITE_NAME` }}</template>
+  </metainfo>
+
+
   <HeroSection />
   <div class="main-grid">
-    <SliderContainer
-      v-model:linkList="linkList"
-      v-model:progress="timelineProgress"
-      @changeActiveLink="changeActiveLink"
-    >
+    <SliderContainer v-model:linkList="linkList" v-model:progress="timelineProgress" @changeActiveLink="changeActiveLink">
       <template v-slot:item.skills="{ slide }">
         <SliderContentSkills :slide="slide" />
       </template>
@@ -29,6 +30,7 @@
 <script setup lang="ts">
 // import RightNavbar from './components/RightNavbar.vue'
 import { ref } from "vue";
+import { useMeta } from 'vue-meta'
 
 import type { ListItem } from "./types";
 import SliderContainer from "./components/SliderContainer.vue";
@@ -39,7 +41,14 @@ import SliderContentSkills from "./components/SliderContentSkills.vue";
 import SliderContentExperience from "./components/SliderContentExperience.vue";
 import SliderContentProjects from "./components/SliderContentProjects.vue";
 import SliderContentContacts from "./components/SliderContentContacts.vue";
-import SliderContentBlog from "./components/SliderContentBlog.vue";
+// import SliderContentBlog from "./components/SliderContentBlog.vue";
+
+
+// meta
+useMeta({
+  title: 'Paweł Gałkowski - Frontend Developer',
+  htmlAttrs: { lang: 'en', amp: true }
+})
 
 const timelineProgress = ref<number>(0);
 
@@ -89,6 +98,7 @@ function changeActiveLink(id: string): void {
 
 <style scoped lang="scss">
 @import "./assets/styles/variables.scss";
+
 .main-grid {
   top: 600px;
   margin-top: 600px;
@@ -97,6 +107,7 @@ function changeActiveLink(id: string): void {
   display: grid;
   grid-template-rows: 100vh;
   position: relative;
+
   @media (max-width: 768px) {
     // top: 0px;
   }
