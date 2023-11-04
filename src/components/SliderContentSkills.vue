@@ -32,7 +32,7 @@ const skills = [
     name: "HTML",
     value: "4",
     description:
-      "Proficient in creating accessible web pages using HTML5 newset standards.  Familiar with good SEO practices and able to create web pages that are optimized for search engines.",
+      "Proficient in creating accessible web pages using HTML5 newset standards. Familiar with good SEO practices and able to create web pages that are optimized for search engines.",
   },
   {
     name: "CSS",
@@ -66,7 +66,6 @@ const skills = [
       "Familiar with Node.js and its event-driven, non-blocking I/O model. Able to build scalable and performant server-side applications using Node.js. Continuously learning and improving my Node.js skills.",
   },
 ];
-1;
 </script>
 
 <style scoped lang="scss">

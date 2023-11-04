@@ -29,7 +29,7 @@ const experiences = [
     from: "August 2021",
     to: "Present",
     description:
-      "As a skilled Frontend Developer, I have successfully created and developed several applications using Vue and Nuxt. Working in small teams, I collaborated closely with backend developers to produce customized applications that met the unique needs of our clients. My contributions have been instrumental in delivering high-quality solutions that have exceeded client expectations.",
+      "As a skilled Frontend Developer, I have successfully created and developed several applications using Vue and Nuxt. Working in teams, I collaborated closely with backend developers to produce customized applications that met the unique needs of our clients. My contributions have led to the successful completion of numerous projects.",
   },
 
   {
@@ -38,7 +38,7 @@ const experiences = [
     from: "November 2020",
     to: "August 2021",
     description:
-      "I have been responsible for integrating client websites into custom WHMCS templates and developing Laravel-based websites. I have also created and prepared WHMCS modules for clients, showcasing my expertise in web development and client management. My contributions have led to the successful completion of numerous projects.",
+      "I have been responsible for integrating client websites into custom WHMCS templates and developing Laravel-based websites. I have also created and prepared WHMCS modules for clients, showcasing my expertise in web development and client management.",
   },
   {
     position: "Junior Frontend Developer",
@@ -46,7 +46,7 @@ const experiences = [
     from: "April 2020",
     to: "June 2020",
     description:
-      "During my Junior Frontend Developer Internship, I had the opportunity to work with cutting-edge technologies such as Vue.js and React. I was responsible for creating stunning websites for the company's clients, showcasing my skills in front-end development, design, and user experience. I was able to learn from experienced developers and contribute to the team's success, while also gaining valuable experience in the industry. It was an exciting and rewarding experience that solidified my passion for web development.",
+      "During my Junior Frontend Developer Internship, I had the opportunity to work with technologies like Vue.js and React. I was responsible for creating websites for the company's clients, showcasing my skills in front-end development, design, and user experience. I was able to learn from experienced developers and gain valuable experience in the industry. It was an exciting and rewarding experience that solidified my passion for web development.",
   },
 ];
 </script>
