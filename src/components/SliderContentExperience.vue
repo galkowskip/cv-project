@@ -3,36 +3,37 @@
     <template v-slot:title>Experience</template>
     <template v-slot:content>
       <div class="experiences">
-        <div class="experience" v-for="(item, index) in experiences">
-          <div class="experience__content">
-            <div class="experience__name">
-              {{ item.company }} - {{ item.position }}
-            </div>
-            <div class="experience__value">{{ item.from }} - {{ item.to }}</div>
-          </div>
-          <div class="experience__description">
-            {{ item.description }}
-          </div>
-        </div>
+        <ExperienceListItem v-for="(item, index) in experiences" :key="index" :position="item.position" :image="item.image"
+          :company="item.company" :from="item.from" :to="item.to" :description="item.description" />
       </div>
     </template>
   </SliderContentContainer>
 </template>
 
 <script setup>
+import ExperienceListItem from "./ExperienceListItem.vue";
 import SliderContentContainer from "./SliderContentContainer.vue";
 
 const experiences = [
   {
+    image: "all-windows-group.png",
+    position: "Frontend Developer",
+    company: "All Windows Group",
+    from: "January 2024",
+    to: "Present",
+    description: "I've joined a team of developers working on creating a cutting edge software for a company producing windows and doors. I'm responsible for creating a frontend part of the application using Vue.js from scratch."
+  },
+  {
+    image: "rs-studio.jpeg",
     position: "Frontend Developer",
     company: "RS Studio",
     from: "August 2021",
-    to: "Present",
+    to: "November 2023",
     description:
       "As a skilled Frontend Developer, I have successfully created and developed several applications using Vue and Nuxt. Working in teams, I collaborated closely with backend developers to produce customized applications that met the unique needs of our clients. My contributions have led to the successful completion of numerous projects.",
   },
-
   {
+    image: "rs-studio.jpeg",
     position: "Junior Frontend Developer",
     company: "RS Studio",
     from: "November 2020",
@@ -41,6 +42,7 @@ const experiences = [
       "I have been responsible for integrating client websites into custom WHMCS templates and developing Laravel-based websites. I have also created and prepared WHMCS modules for clients, showcasing my expertise in web development and client management.",
   },
   {
+    image: "interactive-vision.png",
     position: "Junior Frontend Developer",
     company: "Interactive Vision",
     from: "April 2020",
@@ -58,34 +60,6 @@ const experiences = [
       display: flex;
       flex-direction: column;
       gap: 48px;
-      .experience {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-
-        .experience__content {
-          display: flex;
-          align-content: center;
-          justify-content: space-between;
-          @media (max-width: 768px) {
-            flex-direction: column;
-            gap: 8px;
-          }
-        }
-        .experience__name {
-          font-size: 22px;
-          font-weight: 600;
-        }
-        .experience__value {
-          font-size: 18px;
-          font-weight: 400;
-        }
-        .experience__description {
-          font-size: 16px;
-          font-weight: 400;
-          text-align: justify;
-        }
-      }
     }
   }
 }
